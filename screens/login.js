@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import cheerio from 'cheerio';
 import {
   View,
@@ -10,8 +10,11 @@ import {
   Keyboard,
   Button,
   Image,
-  Platform
+  Platform,
+  StatusBar,
+  ActivityIndicator,
 } from 'react-native';
+import CheckBox from '@react-native-community/checkbox'
 import * as Animatable from 'react-native-animatable';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import {COLORS, SIZES} from '../constants/theme';
@@ -19,7 +22,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import login_bg_1 from '../assets/images/undraw_secure_login_pdn4.png';
 import logo from '../assets/images/ueh_logo.png';
 import UEH_API from '../modules/API';
-const Login = () => {
+import {AuthContext} from '../components/context'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const Login = (props) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -30,8 +35,7 @@ const Login = () => {
     formContainer: {
       width: SIZES.width,
       paddingBottom: SIZES.padding * 6,
-      borderTopStartRadius: 50,
-      borderTopEndRadius: 50,
+      borderTopStartRadius: 120,
       backgroundColor: COLORS.white,
       display: 'flex',
       flexDirection: 'column',
@@ -72,6 +76,7 @@ const Login = () => {
       marginTop: 20,
       borderRadius: 15,
       backgroundColor: COLORS.secondary,
+      position: 'relative',
     },
     ueh: {
       fontSize: SIZES.h1 * 1.5,
@@ -89,57 +94,133 @@ const Login = () => {
       left: 0,
       backgroundColor: COLORS.white,
     },
+    checkboxContainer:{
+      marginTop: 10,
+      marginHorizontal: 20,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center'
+    }
   });
 
-  const handleLoginSubmit = async () => {
+  const {signIn, rememberUser} = React.useContext(AuthContext)
+
+  const handleLoginSubmit = async ({userID, userPassword}) => {
+    setLoading(true)
     const API = new UEH_API();
     const data = await API.getAllData({
-      userID: '31201020315',
-      userPassword: '21967754',
+      userID: userID,
+      userPassword: userPassword,
     });
-
-    console.log(data);
+    setLoading(false)
+    console.log(data)
+    if(data.schedule.length > 0){
+      await rememberUser( JSON.stringify({userID, userPassword}))
+      const a = await AsyncStorage.getItem('user_auth')
+      console.log(a)
+    }else{
+      Alert.alert('LOGIN FAIL')
+    }
     // const a = await UEH_API.login()
     // console.log(a)
     // const user = await UEH_API.getStudentInfo();
     // console.log(user)
     // Alert.alert(a)
   };
-  const [userID, setUserID] = React.useState('');
-  const [userPassword, setUserPassword] = React.useState('');
 
+  const [data, setData] = React.useState({
+    userID: '',
+    userPassword: '',
+    toggleShowPassword: true,
+    checkboxValue: false
+  })
+
+  const [isLoading, setLoading] = React.useState(false)
+  const handleIDChange = (val) =>{
+    setData({
+      ...data,
+      userID: val
+    })
+  }
+
+  const handlePasswordChange = (val) =>{
+    setData({
+      ...data,
+      userPassword: val
+    })
+  }
+  const toggleShowPassword = () =>{
+    setData({
+      ...data,
+      toggleShowPassword: !data.toggleShowPassword
+    })
+  }
+
+  useEffect(() => {
+    const getRememberUser = async() =>{
+      const user_auth = await AsyncStorage.getItem('user_auth')
+      const {userID, userPassword} = JSON.parse(user_auth)
+      setData({
+        ...data,
+        userID,
+        userPassword
+      })
+
+    }
+    getRememberUser()
+  }, [])
   return (
+    
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <View style={styles.loadingContainer}></View>
-
-        <Animatable.View animation="fadeInUpBig" style={styles.formContainer}>
+        <AuthContext.Consumer>
+          {context =>(
+<Animatable.View animation="fadeInUpBig" style={styles.formContainer}>
+  <StatusBar barStyle='light-content'></StatusBar>
           <Image source={login_bg_1} style={{width: 150, height: 150}} />
           <Text style={styles.title}>Login to</Text>
           <Text style={styles.ueh}>UEH ❤️</Text>
           <View style={styles.customInput}>
             <FontAwesome name="user-o" color={COLORS.darkGray} size={20} />
             <TextInput
+              editable={!isLoading}
               style={styles.input}
               placeholder="Mã số sinh viên"
               keyboardType="number-pad"
-              value={userID}
-              onChangeText={(text) => setUserID(text)}></TextInput>
+              value={data.userID}
+              onChangeText={(text) => handleIDChange(text)}></TextInput>
           </View>
 
           <View style={styles.customInput}>
             <FontAwesome name="lock" color={COLORS.darkGray} size={20} />
             <TextInput
+              editable={!isLoading}
               style={styles.input}
-              secureTextEntry={true}
+              secureTextEntry={data.toggleShowPassword}
               placeholder="Mật khẩu"
-              value={userPassword}
-              onChangeText={(text) => setUserPassword(text)}></TextInput>
+              value={data.userPassword}
+              onChangeText={(text) => handlePasswordChange(text)}></TextInput>
+              <TouchableOpacity onPress={() => toggleShowPassword()} disabled={isLoading}>
+                <FontAwesome name="eye" color={COLORS.darkGray} size={20} />
+              </TouchableOpacity>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox value={data.checkboxValue} onValueChange={val => setData({...data, checkboxValue: val})} style={{width: 20, height: 20, marginRight: 10}} onFillColor={COLORS.white} onCheckColor={COLORS.primary} onTintColor={COLORS.primary} onAnimationType="one-stroke" offAnimationType="one-stroke" disabled={isLoading} />
+            <Text style={{flex: 1, fontSize: SIZES.font, color: COLORS.darkGray}}>
+              Ghi nhớ tài khoản 
+            </Text>
           </View>
 
           <TouchableOpacity
+          disabled={isLoading}
             style={styles.btnCustom}
-            onPress={() => handleLoginSubmit()}>
+            onPress={() => handleLoginSubmit({userID: data.userID, userPassword: data.userPassword})}>
+              
+              {isLoading ? (
+
+            <ActivityIndicator size='large' color={COLORS.white} />
+              ) : (
             <Text
               style={{
                 color: COLORS.white,
@@ -148,8 +229,15 @@ const Login = () => {
               }}>
               Đăng Nhập
             </Text>
+              )
+}
           </TouchableOpacity>
         </Animatable.View>
+          )}
+
+        
+
+        </AuthContext.Consumer>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
