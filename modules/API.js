@@ -106,7 +106,12 @@ class UEH_API {
         .then((res) => {
           const $ = cheerio.load(res.data);
           this.setHidenParam(res.data)
-          reslove($("#lbtDangnhap").text());
+          if($("#lbtDangnhap").text().toString() === "Đăng Thoát"){
+            reslove("LOGIN OK")
+          }
+          else{
+            reject("LOGIN FAIL")
+          }
         })
         .catch((err) => reject(err));
     });

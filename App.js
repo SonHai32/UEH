@@ -30,6 +30,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Login from './screens/login'
+import HomeScreen from './screens/HomeScreen'
 const Stack = createStackNavigator()
 
 const App: () => React$Node = () => {
@@ -43,7 +44,7 @@ const App: () => React$Node = () => {
       case "LOGIN":
         return{
           ...prevState,
-          userData: action.userData,
+          userData: JSON.parse(action.userData),
           isLoading: false
         }
       case "LOGOUT":
@@ -58,6 +59,11 @@ const App: () => React$Node = () => {
           isLoading: false,
           userAuth: action.userAuth
         }
+        case "CLEAR_USER": 
+        return{
+          ...prevState,
+          userAuth: null
+        }
     }
   }
 
@@ -67,7 +73,7 @@ const App: () => React$Node = () => {
     signIn: async(userData) =>{
      try {
       await  AsyncStorage.setItem('user_data', userData)
-      dispatch({type: 'LOGIN', userData})
+      dispatch({type: "LOGIN", userData: userData})
      } catch (error) {
       console.log(error) 
      } 
@@ -87,6 +93,14 @@ const App: () => React$Node = () => {
         console.log(error)
       }
     },
+    clearUser: async () =>{
+      try {
+        await AsyncStorage.removeItem('user_auth')
+        dispatch({type: 'CLEAR_USER'})
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
   }), [])
   return (
@@ -97,9 +111,16 @@ const App: () => React$Node = () => {
       screenOptions={{
         headerShown: false
       }}
-      initialRouteName={"login"}
     >
-      <Stack.Screen name="login" component={Login} />
+      {loginState.userData !== null ? (
+
+      <Stack.Screen name="HOME" component={HomeScreen} />
+      ): 
+      (
+
+      <Stack.Screen name="LOGIN" component={Login} />
+      )  
+    }
     </Stack.Navigator>
   </NavigationContainer>
 

@@ -104,24 +104,31 @@ const Login = (props) => {
     }
   });
 
-  const {signIn, rememberUser} = React.useContext(AuthContext)
+  const {signIn, rememberUser, clearUser} = React.useContext(AuthContext)
 
-  const handleLoginSubmit = async ({userID, userPassword}) => {
+  const handleLoginSubmit = async ({userID, userPassword, rememberChecked}) => {
     setLoading(true)
-    const API = new UEH_API();
-    const data = await API.getAllData({
-      userID: userID,
-      userPassword: userPassword,
-    });
-    setLoading(false)
-    console.log(data)
-    if(data.schedule.length > 0){
+    if(rememberChecked){
       await rememberUser( JSON.stringify({userID, userPassword}))
-      const a = await AsyncStorage.getItem('user_auth')
-      console.log(a)
-    }else{
-      Alert.alert('LOGIN FAIL')
     }
+    else{
+      await clearUser()
+    }
+    try {
+      const API = new UEH_API();
+      const data = await API.getAllData({
+        userID: userID,
+        userPassword: userPassword,
+    });
+
+      signIn(JSON.stringify(data))
+
+    } catch (error) {
+      Alert.alert("Đăng nhập thất bại ")  
+    }
+    setLoading(false) 
+    
+    
     // const a = await UEH_API.login()
     // console.log(a)
     // const user = await UEH_API.getStudentInfo();
@@ -160,12 +167,18 @@ const Login = (props) => {
   useEffect(() => {
     const getRememberUser = async() =>{
       const user_auth = await AsyncStorage.getItem('user_auth')
-      const {userID, userPassword} = JSON.parse(user_auth)
-      setData({
-        ...data,
-        userID,
-        userPassword
-      })
+      if(user_auth !== null)
+      {
+
+        const {userID, userPassword} = JSON.parse(user_auth)
+        setData({
+          ...data,
+          checkboxValue: true,
+          userID,
+          userPassword
+        })
+
+      }
 
     }
     getRememberUser()
@@ -215,7 +228,7 @@ const Login = (props) => {
           <TouchableOpacity
           disabled={isLoading}
             style={styles.btnCustom}
-            onPress={() => handleLoginSubmit({userID: data.userID, userPassword: data.userPassword})}>
+            onPress={() => handleLoginSubmit({userID: data.userID, userPassword: data.userPassword, rememberChecked: data.checkboxValue})}>
               
               {isLoading ? (
 
