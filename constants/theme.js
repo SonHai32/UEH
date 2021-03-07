@@ -10,6 +10,13 @@ export const COLORS = {
   primary: '#6200ee',
   secondary: '#03DAC5',
 
+  swatch1: '#eee2f0',
+  swatch2: '#c0aae2',
+  swatch3: '#7018f8',
+  swatch4: '#c55849',
+  swatch5: '#a353fb',
+  swatch6: '#4238cb',
+
   //color
   black: '#1e1f20',
   white: '#ffffff',
@@ -20,6 +27,9 @@ export const COLORS = {
 
   darkGray: '#898c95',
   transparent: 'transparent',
+
+  glass: ['rgba(255,255,255, 0.7)', 'rgba(255,255,255, 0.3)'],
+  background: ['#65dfc9', '#6cdbeb']
 
 }
 
