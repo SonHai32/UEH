@@ -19,8 +19,7 @@ import {
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {AuthContext} from './components/context'
-
+import {AuthContext, UserContext} from './components/context'
 import {
   Header,
   LearnMoreLinks,
@@ -30,7 +29,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Login from './screens/login'
-import HomeScreen from './screens/HomeScreen'
+import HomeScreen from './screens/MainTabScreen'
+import MainTabScreen from './screens/MainTabScreen';
 const Stack = createStackNavigator()
 
 const App: () => React$Node = () => {
@@ -100,13 +100,15 @@ const App: () => React$Node = () => {
       } catch (error) {
         console.log(error)
       }
-    }
-
+    },
+    getUser: () => {return loginState.userData}
   }), [])
   return (
 <AuthContext.Provider value={authContext}>
 
+        <UserContext.Provider value={loginState.userData}>
     <NavigationContainer>
+
     <Stack.Navigator
       screenOptions={{
         headerShown: false
@@ -114,7 +116,8 @@ const App: () => React$Node = () => {
     >
       {loginState.userData !== null ? (
 
-      <Stack.Screen name="HOME" component={HomeScreen} />
+      <Stack.Screen name="HOME" component={MainTabScreen} />
+
       ): 
       (
 
@@ -123,6 +126,7 @@ const App: () => React$Node = () => {
     }
     </Stack.Navigator>
   </NavigationContainer>
+</UserContext.Provider>
 
 </AuthContext.Provider>
 
