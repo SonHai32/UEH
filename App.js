@@ -71,19 +71,10 @@ const App: () => React$Node = () => {
 
   const authContext = React.useMemo(() =>({
     signIn: async(userData) =>{
-     try {
-      await  AsyncStorage.setItem('user_data', userData)
       dispatch({type: "LOGIN", userData: userData})
-     } catch (error) {
-      console.log(error) 
-     } 
     },
     signOut: async () =>{
-      try {
-        await AsyncStorage.removeItem('user_data')
-      } catch (error) {
-       console.log(error) 
-      }
+      dispatch({type: "LOGOUT"})
     },
     rememberUser: async (userAuth) =>{
       try {
@@ -101,7 +92,6 @@ const App: () => React$Node = () => {
         console.log(error)
       }
     },
-    getUser: () => {return loginState.userData}
   }), [])
   return (
 <AuthContext.Provider value={authContext}>
