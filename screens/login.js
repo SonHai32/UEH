@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import cheerio from 'cheerio';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   View,
   Text,
@@ -24,6 +24,8 @@ import logo from '../assets/images/ueh_logo.png';
 import UEH_API from '../modules/API';
 import {AuthContext} from '../components/context'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 const Login = (props) => {
   const styles = StyleSheet.create({
     container: {
@@ -34,9 +36,7 @@ const Login = (props) => {
     },
     formContainer: {
       width: SIZES.width,
-      paddingBottom: SIZES.padding * 6,
       borderTopStartRadius: 120,
-      backgroundColor: COLORS.white,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -77,6 +77,7 @@ const Login = (props) => {
       borderRadius: 15,
       backgroundColor: COLORS.secondary,
       position: 'relative',
+      marginBottom: 80
     },
     ueh: {
       fontSize: SIZES.h1 * 1.5,
@@ -124,7 +125,8 @@ const Login = (props) => {
       signIn(JSON.stringify(data))
 
     } catch (error) {
-      Alert.alert("Đăng nhập thất bại ")  
+      console.log(error)
+      Alert.alert("Đăng nhập thất bại\n\n" + error.toString())  
     }
     setLoading(false) 
     
@@ -187,11 +189,17 @@ const Login = (props) => {
     
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
+
+          <LinearGradient colors={COLORS.background} start={{x: 0, y: 0}} end={{x: 1, y: 1}} style={styles.container}>
         <AuthContext.Consumer>
           {context =>(
-<Animatable.View animation="fadeInUpBig" style={styles.formContainer}>
+<Animatable.View animation="fadeInUpBig">
+
+          <LinearGradient colors={COLORS.glass} start={{x: 0, y: 0}} end={{x: 1, y: 1}} style={styles.formContainer}>
+          <LinearGradient colors={COLORS.glass} start={{x: 0, y: 0}} end={{x: 1, y: 1}} style={styles.formContainer}>
+
   <StatusBar barStyle='light-content'></StatusBar>
-          <Image source={login_bg_1} style={{width: 150, height: 150}} />
+          <Image source={login_bg_1} style={{width: 150, height: 150 , resizeMode:'center'}} />
           <Text style={styles.title}>Login to</Text>
           <Text style={styles.ueh}>UEH ❤️</Text>
           <View style={styles.customInput}>
@@ -219,15 +227,15 @@ const Login = (props) => {
               </TouchableOpacity>
           </View>
           <View style={styles.checkboxContainer}>
-            <CheckBox value={data.checkboxValue} onValueChange={val => setData({...data, checkboxValue: val})} style={{width: 20, height: 20, marginRight: 10}} onFillColor={COLORS.white} onCheckColor={COLORS.primary} onTintColor={COLORS.primary} onAnimationType="one-stroke" offAnimationType="one-stroke" disabled={isLoading} />
+            <CheckBox value={data.checkboxValue} onValueChange={val => setData({...data, checkboxValue: val})} style={{width: 20, height: 20, marginRight: 10}} onFillColor='rgba(255,255,255,0)' onCheckColor={COLORS.darkGray} onTintColor={COLORS.darkGray} onAnimationType="one-stroke" offAnimationType="one-stroke" disabled={isLoading} />
             <Text style={{flex: 1, fontSize: SIZES.font, color: COLORS.darkGray}}>
               Ghi nhớ tài khoản 
             </Text>
           </View>
 
+          <LinearGradient colors={COLORS.background} start={{x: 0, y: 1}} end={{x: 1, y: 0}} style={styles.btnCustom}>
           <TouchableOpacity
           disabled={isLoading}
-            style={styles.btnCustom}
             onPress={() => handleLoginSubmit({userID: data.userID, userPassword: data.userPassword, rememberChecked: data.checkboxValue})}>
               
               {isLoading ? (
@@ -245,12 +253,17 @@ const Login = (props) => {
               )
 }
           </TouchableOpacity>
+</LinearGradient>
+</LinearGradient>
+</LinearGradient>
         </Animatable.View>
           )}
 
         
 
         </AuthContext.Consumer>
+        
+</LinearGradient>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
