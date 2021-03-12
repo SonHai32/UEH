@@ -59,28 +59,34 @@ const DashboardSceen = ({navigation}) => {
   const RenderDashBoardItems = () => {
     const data = [
       {
-        name: 'Cá nhân',
+        name: 'Profile',
+        label: 'Cá nhân',
         icon: 'person-outline',
       },
       {
-        name: 'Lịch thi',
+        name: 'TestSchedule',
+        label: 'Lịch thi',
         icon: 'calendar-outline',
       },
 
       {
-        name: 'Lịch học',
+        name: 'Shedule',
+        label: 'Lịch học',
         icon: 'calendar-outline',
       },
       {
-        name: 'Bảng điểm',
+        name: 'ScoreBoard',
+        label: 'Bảng điểm',
         icon: 'reader-outline',
       },
       {
-        name: 'Chương trình',
+        name: 'Program',
+        label: 'Chương trình',
         icon: 'calendar-outline',
       },
       {
-        name: 'Thông báo',
+        name: 'Notifications',
+        label: 'Thông báo',
         icon: 'notifications-outline',
       },
       
@@ -89,7 +95,6 @@ const DashboardSceen = ({navigation}) => {
 
     const handleDashboardItemsPress = name =>{
       Alert.alert(name)
-      navigation.navigate('Profile')
     }
     return (
       <FlatGrid
@@ -112,7 +117,7 @@ const DashboardSceen = ({navigation}) => {
                 fontWeight: '500',
                 marginTop: 10,
               }}>
-                {item.name}
+                {item.label}
             </Text>
           </LinearGradient>
 
