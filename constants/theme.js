@@ -29,7 +29,10 @@ export const COLORS = {
   transparent: 'transparent',
 
   glass: ['rgba(255,255,255, 0.7)', 'rgba(255,255,255, 0.3)'],
-  background: ['#65dfc9', '#6cdbeb']
+  background: ['#65dfc9', '#6cdbeb'],
+  pink: "#E795F7",
+  pink_2: '#DD3AA8',
+  blue: '#15B7F7',
 
 }
 
