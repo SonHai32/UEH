@@ -94,7 +94,7 @@ const DashboardSceen = ({navigation}) => {
 
 
     const handleDashboardItemsPress = name =>{
-      Alert.alert(name)
+      navigation.navigate(name)
     }
     return (
       <FlatGrid
