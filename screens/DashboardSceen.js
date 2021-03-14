@@ -70,7 +70,7 @@ const DashboardSceen = ({navigation}) => {
       },
 
       {
-        name: 'Shedule',
+        name: 'Schedule',
         label: 'Lịch học',
         icon: 'calendar-outline',
       },
