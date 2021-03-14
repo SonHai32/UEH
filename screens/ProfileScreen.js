@@ -112,13 +112,13 @@ return(
 
           <LinearGradient
             colors={COLORS.glass}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 1}}
+            start={{x: 1, y: 1}}
+            end={{x: 0, y: 0}}
             style={styles.container}>
             <LinearGradient
               colors={COLORS.glass}
-              start={{x: 0, y: 1}}
-              end={{x: 1, y: 0}}
+              start={{x: 1, y: 0}}
+              end={{x: 0.4, y: 1}}
               style={styles.container}>
                   <TouchableOpacity style={styles.btnBack} onPress = {() => navigation.navigate('Dashboard')}>
                     <Ionicons name='arrow-back-outline' color={COLORS.black} size={26} />
