@@ -82,7 +82,7 @@ const ScheduleScreen = ({navigation}) => {
     const RenderScheduleItemContent = ({schedule}) => {
       return Object.keys(schedule).map((val) => {
         return (
-          <View style={styles.scheduleItemContent}>
+          <View key={`content-label-${val}`} style={styles.scheduleItemContent}>
             <Text style={styles.scheduleItemContentLabel}>
               {val === 'subjectName'
                 ? 'Môn học : '
@@ -94,7 +94,7 @@ const ScheduleScreen = ({navigation}) => {
                 ? 'Giờ kết thúc : '
                 : null}
             </Text>
-            <Text style={styles.scheduleItemContentValue}>
+            <Text key={`content-${val}`} style={styles.scheduleItemContentValue}>
               {val === 'subjectName'
                 ? schedule['subjectName']
                 : val === 'room'
@@ -122,10 +122,12 @@ const ScheduleScreen = ({navigation}) => {
           const date = moment(item.date, 'DD/MM/YYYY').format('DD/MM/YYYY');
           return (
             <LinearGradient
+            key={`con-${item.date}`}
               colors={COLORS.glass}
               style={styles.scheduleItemContainer}>
-              <View style={styles.scheduleItemHeader}>
+              <View key={`header-${item.date}`} style={styles.scheduleItemHeader}>
                 <Text
+                key={`text-${item.date}`}
                   style={{
                     ...styles.textHeader,
                     color: date == CURRENT_DATE ? COLORS.pink : null,
