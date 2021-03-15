@@ -39,12 +39,13 @@ const DashboardSceen = ({navigation}) => {
       marginTop: 15,
       fontSize: SIZES.h1,
       color: COLORS.blue,
-      fontWeight: '200',
+      fontWeight: '800',
     },
     smallText: {
       marginTop: 10,
       fontSize: SIZES.h4,
       color: COLORS.blue,
+      fontWeight: '600'
     },
     dashboardItems: {
       display: 'flex',
@@ -142,7 +143,7 @@ const DashboardSceen = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 0, y: 0.8}}
             style={styles.userInfoContainer}>
-            {/* <Image
+            <Image
               source={{uri: user.userInfo.avatar}}
               style={{
                 width: 200,
@@ -150,7 +151,7 @@ const DashboardSceen = ({navigation}) => {
                 resizeMode: 'cover',
                 borderRadius: 100,
               }}
-            /> */}
+            />
             <Text style={styles.usernameHeading}>{user.userInfo.name}</Text>
             <Text style={styles.smallText}>{user.userInfo.id}</Text>
           </LinearGradient>
