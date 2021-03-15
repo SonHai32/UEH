@@ -1,9 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import {COLORS, SIZES} from '../constants/theme';
 
-import {FlatGrid} from 'react-native-super-grid';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import AppBar from '../components/Layouts/AppBar';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -13,9 +11,6 @@ import {
   Image,
   Text,
   StatusBar,
-  Animated,
-  TouchableOpacity,
-  Alert,
 } from 'react-native';
 import {UserContext} from '../components/context';
 const ProfileScreen = ({navigation}) => {
@@ -37,7 +32,7 @@ const ProfileScreen = ({navigation}) => {
       justifyContent: 'center',
       flexDirection: 'column',
       alignItems: 'center',
-      marginTop: SIZES.padding * 10,
+      marginTop: SIZES.padding * 5,
     },
     avatar: {
       width: 200,
@@ -48,13 +43,14 @@ const ProfileScreen = ({navigation}) => {
     userTextName: {
       fontSize: SIZES.h1,
       color: COLORS.blue,
-      fontWeight: '200',
+      fontWeight: '800',
       marginTop: 10,
     },
     infoContainer: {
       flex: 2,
       display: 'flex',
       flexDirection: 'column',
+      marginTop: 40,
       padding: SIZES.padding * 2,
     },
     infoItems: {
@@ -67,11 +63,12 @@ const ProfileScreen = ({navigation}) => {
       flex: 1,
       color: COLORS.black,
       fontSize: SIZES.h4,
-      fontWeight: '500',
+      fontWeight: '800',
     },
     infoItemsData: {
       flex: 2.5,
       color: COLORS.black,
+      fontWeight: '400'
     },
     btnBack: {
       display: 'flex',
