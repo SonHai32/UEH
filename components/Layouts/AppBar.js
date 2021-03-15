@@ -16,7 +16,7 @@ const AppBar = ({title, navigation, navigate}) => {
     text: {
       marginTop: 20,
       fontSize: SIZES.h1,
-      color: COLORS.black,
+      color: COLORS.white,
       fontWeight: '800',
     },
     btnBack: {
