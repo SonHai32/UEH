@@ -110,12 +110,12 @@ const DashboardSceen = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 0, y: 0.8}}
             style={styles.dashboardItems}>
-            <Ionicons name={item.icon} size={40} color={COLORS.pink_2}/>
+            <Ionicons name={item.icon} size={40} color={COLORS.blue}/>
             <Text
               style={{
-                color: COLORS.pink_2,
+                color: COLORS.black,
                 fontSize: 14,
-                fontWeight: '500',
+                fontWeight: '800',
                 marginTop: 10,
               }}>
                 {item.label}
