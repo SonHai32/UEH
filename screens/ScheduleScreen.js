@@ -6,6 +6,8 @@ import {UserContext} from '../components/context';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import * as Animatable from 'react-native-animatable';
+
 import AppBar from '../components/Layouts/AppBar';
 
 import {COLORS, SIZES} from '../constants/theme';
@@ -121,6 +123,8 @@ const ScheduleScreen = ({navigation}) => {
         renderItem={({item}) => {
           const date = moment(item.date, 'DD/MM/YYYY').format('DD/MM/YYYY');
           return (
+            <Animatable.View animation='lightSpeedIn'>
+
             <LinearGradient
             key={`con-${item.date}`}
               colors={COLORS.glass}
@@ -137,6 +141,8 @@ const ScheduleScreen = ({navigation}) => {
               </View>
               <RenderScheduleItemContent schedule={item} />
             </LinearGradient>
+
+            </Animatable.View>
           );
         }}
       />
