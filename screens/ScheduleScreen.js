@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import moment from 'moment';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
@@ -115,6 +115,7 @@ const ScheduleScreen = ({navigation}) => {
     
 
     const CURRENT_DATE = moment().format('DD/MM/YYYY');
+
     return (
       <FlatGrid
         itemDimension={200}
@@ -134,7 +135,7 @@ const ScheduleScreen = ({navigation}) => {
                 key={`text-${item.date}`}
                   style={{
                     ...styles.textHeader,
-                    color: date == CURRENT_DATE ? COLORS.pink : null,
+                    color: date == CURRENT_DATE ? COLORS.pink : COLORS.black,
                   }}>
                   {moment(item.date, 'DD/MM/YYYY').format('dddd DD/MM/YYYY')}
                 </Text>
@@ -149,7 +150,7 @@ const ScheduleScreen = ({navigation}) => {
     );
   };
 
-  const [currentWeekIndex, setCurrentWeekIndex] = useState(moment().week() + 1);
+  const [currentWeekIndex, setCurrentWeekIndex] = useState(moment().week());
 const handleWeekIndex = (option) =>{
         if(option === 'next'){
             setCurrentWeekIndex(prevWeekIndex => prevWeekIndex + 1)
