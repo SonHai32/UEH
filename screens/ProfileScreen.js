@@ -1,7 +1,6 @@
 import React from 'react';
-
+import * as Animatable from 'react-native-animatable';
 import {COLORS, SIZES} from '../constants/theme';
-
 import AppBar from '../components/Layouts/AppBar';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -11,6 +10,7 @@ import {
   Image,
   Text,
   StatusBar,
+  Platform,
 } from 'react-native';
 import {UserContext} from '../components/context';
 const ProfileScreen = ({navigation}) => {
@@ -32,7 +32,7 @@ const ProfileScreen = ({navigation}) => {
       justifyContent: 'center',
       flexDirection: 'column',
       alignItems: 'center',
-      marginTop: SIZES.padding * 5,
+      marginTop: Platform.OS !== 'ios' ? SIZES.padding2 * 2 : SIZES.padding2 * 5,
     },
     avatar: {
       width: 200,
@@ -50,10 +50,11 @@ const ProfileScreen = ({navigation}) => {
       flex: 2,
       display: 'flex',
       flexDirection: 'column',
-      marginTop: 40,
-      padding: SIZES.padding * 2,
+      marginTop: 80,
+      padding: SIZES.padding ,
     },
     infoItems: {
+      marginTop: 2,
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -68,7 +69,7 @@ const ProfileScreen = ({navigation}) => {
     infoItemsData: {
       flex: 2.5,
       color: COLORS.black,
-      fontWeight: '400'
+      fontWeight: '600'
     },
     btnBack: {
       display: 'flex',
@@ -82,8 +83,8 @@ const ProfileScreen = ({navigation}) => {
   const RenderUserInfo = (user) => {
     return Object.keys(user).map((val, key) => {
       return (
-        <View key={`v-${val}`} style={styles.infoItems}>
-          <Text key={`t-${val}`} style={styles.infoItemsLabel}>
+        <View  key={`v-${val}`} style={styles.infoItems}>
+          <Animatable.Text animation='slideInLeft' key={`t-${val}`} style={styles.infoItemsLabel}>
             {' '}
             {val === 'id'
               ? 'MSSV: '
@@ -102,20 +103,16 @@ const ProfileScreen = ({navigation}) => {
               : val === 'avatar'
               ? ''
               : ''}{' '}
-          </Text>
-          <Text key={`user-${val}`} style={styles.infoItemsData}>
+          </Animatable.Text>
+          <Animatable.Text animation='slideInRight' key={`user-${val}`} style={styles.infoItemsData}>
             {' '}
             {val === 'avatar' ? null : user[val]}{' '}
-          </Text>
+          </Animatable.Text>
         </View>
       );
     });
   };
-  const test = (user) => {
-    for (const [key, value] of Object.entries(user)) {
-      console.log(`${key}: ${value}`);
-    }
-  };
+ 
   return (
     <UserContext.Consumer>
       {(user) => (
