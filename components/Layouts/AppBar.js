@@ -7,7 +7,7 @@ const AppBar = ({title, navigation, navigate}) => {
   const styles = StyleSheet.create({
     container: {
       height: 180,
-      borderBottomEndRadius: 100,
+      borderBottomRightRadius: 100,
       position: 'relative',
       display: 'flex',
       justifyContent: 'center',
