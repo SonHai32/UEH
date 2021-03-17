@@ -124,7 +124,7 @@ const ScheduleScreen = ({navigation}) => {
         renderItem={({item}) => {
           const date = moment(item.date, 'DD/MM/YYYY').format('DD/MM/YYYY');
           return (
-            <Animatable.View animation='lightSpeedIn'>
+            <Animatable.View key={`key-${item.date}`} animation='lightSpeedIn'>
 
             <LinearGradient
             key={`con-${item.date}`}
