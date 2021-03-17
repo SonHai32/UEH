@@ -36,7 +36,7 @@ const Login = (props) => {
     },
     formContainer: {
       width: SIZES.width,
-      borderTopStartRadius: 120,
+      borderTopLeftRadius: 120,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
