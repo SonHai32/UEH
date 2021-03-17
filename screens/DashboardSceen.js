@@ -2,12 +2,11 @@ import React, {useEffect} from 'react';
 
 import {COLORS, SIZES} from '../constants/theme';
 
-import {FlatGrid} from 'react-native-super-grid';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import LinearGradient from 'react-native-linear-gradient';
 
-import {View, StyleSheet, Image, Text, StatusBar, Animated, TouchableOpacity, Alert} from 'react-native';
+import {View, StyleSheet, Image, Text, StatusBar, FlatList, TouchableOpacity, Platform} from 'react-native';
 import {UserContext} from '../components/context';
 const DashboardSceen = ({navigation}) => {
   const styles = StyleSheet.create({
@@ -22,10 +21,8 @@ const DashboardSceen = ({navigation}) => {
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      borderBottomEndRadius: 45,
-      borderBottomStartRadius: 45,
-      borderBottomWidth: 1,
-      borderColor: '#fff',
+      borderBottomRightRadius: 45,
+      borderBottomLeftRadius: 45,
     },
     dashboardContainer: {
       flex: 2,
@@ -36,7 +33,7 @@ const DashboardSceen = ({navigation}) => {
       paddingTop: SIZES.padding * 5,
     },
     usernameHeading: {
-      marginTop: 15,
+      marginTop: Platform.OS !== 'ios' ? 0 : 15,
       fontSize: SIZES.h1,
       color: COLORS.blue,
       fontWeight: '800',
@@ -49,8 +46,9 @@ const DashboardSceen = ({navigation}) => {
     },
     dashboardItems: {
       display: 'flex',
-      width: 128,
-      height: 128,
+      margin: 5,
+      width: SIZES.width <= 400 ? 110 : 128,
+      height: SIZES.width <= 400 ? 110 : 128,
       borderRadius: 20,
       justifyContent: 'center',
       alignItems: 'center',
@@ -98,13 +96,16 @@ const DashboardSceen = ({navigation}) => {
       navigation.navigate(name)
     }
     return (
-      <FlatGrid
-        itemDimension={120}
+      <FlatList
+      contentContainerStyle={{justifyContent: 'center' ,alignItems: 'center'}}  
+      numColumns={3}
         data={data}
         renderItem={({item}) => (
+        
 
           <TouchableOpacity onPress={() => handleDashboardItemsPress(item.name)}>
 
+{console.log(SIZES.width)}
           <LinearGradient
             colors={['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.4)']}
             start={{x: 0, y: 0}}
