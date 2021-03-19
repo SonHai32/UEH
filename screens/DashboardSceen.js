@@ -100,19 +100,21 @@ const DashboardSceen = ({navigation}) => {
       contentContainerStyle={{justifyContent: 'center' ,alignItems: 'center'}}  
       numColumns={3}
         data={data}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
         
 
           <TouchableOpacity key={`key-${item.name}`} onPress={() => handleDashboardItemsPress(item.name)}>
 
-{console.log(SIZES.width)}
           <LinearGradient
+  key={`key-lin-${item.name}`}
             colors={['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.4)']}
             start={{x: 0, y: 0}}
             end={{x: 0, y: 0.8}}
             style={styles.dashboardItems}>
-            <Ionicons name={item.icon} size={40} color={COLORS.blue}/>
+            <Ionicons key={`key-icon-${item.name}`} name={item.icon} size={40} color={COLORS.blue}/>
             <Text
+key={`key-text-${item.name}`}
               style={{
                 color: COLORS.black,
                 fontSize: 14,
