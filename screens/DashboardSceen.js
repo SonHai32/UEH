@@ -103,7 +103,7 @@ const DashboardSceen = ({navigation}) => {
         renderItem={({item}) => (
         
 
-          <TouchableOpacity onPress={() => handleDashboardItemsPress(item.name)}>
+          <TouchableOpacity key={`key-${item.name}`} onPress={() => handleDashboardItemsPress(item.name)}>
 
 {console.log(SIZES.width)}
           <LinearGradient
