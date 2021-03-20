@@ -12,6 +12,14 @@ target 'UEH' do
 
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
+  pod 'appcenter-core', :path => '../node_modules/appcenter'
+
+  pod 'appcenter-analytics', :path => '../node_modules/appcenter-analytics'
+
+  pod 'appcenter-crashes', :path => '../node_modules/appcenter-crashes'
+
   target 'UEHTests' do
     inherit! :complete
     # Pods for testing
