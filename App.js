@@ -6,29 +6,15 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import codePush from "react-native-code-push";
 
+import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext, UserContext} from './components/context'
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-import codePush from 'react-native-code-push'
+
 
 import Login from './screens/login'
 import HomeScreen from './screens/MainTabScreen'
@@ -40,6 +26,7 @@ const App: () => React$Node = () => {
     isLoading: true,
     userData: null
   }
+
 
   const loginReducer = (prevState, action) =>{
     switch(action.type){
@@ -95,6 +82,7 @@ const App: () => React$Node = () => {
       }
     },
   }), [])
+  
   return (
 <AuthContext.Provider value={authContext}>
 

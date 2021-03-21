@@ -12,20 +12,10 @@ target 'UEH' do
 
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
-
   pod 'YogaKit', '~> 1.7'
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
-  target 'UEHTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
-  # Enables Flipper.
-  #
-  # Note that if you have use_frameworks! enabled, Flipper will not work and
-  # you should disable these next few lines.
 
   use_flipper!({ 'Flipper-Folly' => '2.3.0' }) # update this part
  post_install do |installer|
@@ -33,12 +23,5 @@ target 'UEH' do
  end
 end
 
-target 'UEH-tvOS' do
-  # Pods for UEH-tvOS
 
-  target 'UEH-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
 pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
