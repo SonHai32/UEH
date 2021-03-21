@@ -12,6 +12,11 @@ target 'UEH' do
 
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
+
+  pod 'YogaKit', '~> 1.7'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'UEHTests' do
     inherit! :complete
     # Pods for testing

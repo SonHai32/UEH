@@ -28,6 +28,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import codePush from 'react-native-code-push'
+
 import Login from './screens/login'
 import HomeScreen from './screens/MainTabScreen'
 import MainTabScreen from './screens/MainTabScreen';
@@ -124,4 +126,7 @@ const App: () => React$Node = () => {
 }
 
 
-export default App;
+const codePushOptions = {
+checkFrequency: codePush.CheckFrequency.ON_APP_START, installMode: codePush.InstallMode.IMMEDIATE
+}
+export default codePush(codePushOptions)(App);
