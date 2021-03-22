@@ -1643,23 +1643,6 @@ anymatch@^3.0.3:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-<<<<<<< HEAD
-=======
-appcenter-analytics@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-4.0.2.tgz#85cffb9c4242c3e365be4897e40b5925ffd2b2e9"
-  integrity sha512-g3CutRq67t8Xisdw5f2SHB/IDcYpRMIqbxGHCJWkI+iOhnIjZzDMsFWy3owX34k3ENj0LkhiXVuVv06nJSfsBg==
-  dependencies:
-    appcenter "4.0.2"
-
-appcenter-crashes@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-4.0.2.tgz#6fde33ed22a6d061bfbb5d8278f99f5e8af85ab1"
-  integrity sha512-DhnE6F5PpXp+vK3Zf0vfXfkofFbyVblWfCMeQ7rLnpWWmBdZjRPNCd/SSl3EsSjTDh0NMMPH+8kGtgWyYnQ6Iw==
-  dependencies:
-    appcenter "4.0.2"
-
->>>>>>> f2bf54d5c8483d3c3720a344168a19091e9b5ad0
 appcenter-file-upload-client@0.0.24:
   version "0.0.24"
   resolved "https://registry.yarnpkg.com/appcenter-file-upload-client/-/appcenter-file-upload-client-0.0.24.tgz#ba1fb3c0f0073d56168a1853f5e9e9cf38a5114c"
@@ -1669,29 +1652,6 @@ appcenter-file-upload-client@0.0.24:
     superagent "5.1.0"
     url-parse "^1.4.7"
 
-<<<<<<< HEAD
-=======
-appcenter-link-scripts@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-4.0.2.tgz#5e917b11cf225ac949d472c5ed26659403cee5c0"
-  integrity sha512-YOM73E+4SFth1Gda5GWglx0TlC0XyRRhSlEgrpBB8pO0VvHZ/CEVYpVhCAAaAgpqgyC5vM3MvyseKK3Ov2fglQ==
-  dependencies:
-    debug "4.1.1"
-    glob "5.0.15"
-    minimist "1.2.5"
-    mkdirp "0.5.3"
-    plist "3.0.1"
-    which "1.2.11"
-    xcode "2.0.0"
-
-appcenter@4.0.2, appcenter@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-4.0.2.tgz#ffb5af4eae1c4806e5d485f23a881cc21959278e"
-  integrity sha512-Drd9gkpG/rtB/053SDhW9FrNIHgtJdzmlQ6uHMTx/3TsiLHIpZXXEi5WFNSO3UrYpf9gham4IMqUgpl49nsoOA==
-  dependencies:
-    appcenter-link-scripts "4.0.2"
-
->>>>>>> f2bf54d5c8483d3c3720a344168a19091e9b5ad0
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz"
@@ -2678,16 +2638,6 @@ debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   dependencies:
     ms "2.1.2"
 
-<<<<<<< HEAD
-=======
-debug@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
-  integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
-  dependencies:
-    ms "^2.1.1"
-
->>>>>>> f2bf54d5c8483d3c3720a344168a19091e9b5ad0
 debug@^3.1.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
@@ -3737,17 +3687,6 @@ glob-parent@^5.0.0:
   dependencies:
     is-glob "^4.0.1"
 
-glob@5.0.15:
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
-  integrity sha1-G8k2ueAvSmA/zCIuz3Yz0wuLk7E=
-  dependencies:
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "2 || 3"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
 glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz"
@@ -4334,11 +4273,6 @@ isarray@1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
-
-isexe@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/isexe/-/isexe-1.1.2.tgz#36f3e22e60750920f5e7241a476a8c6a42275ad0"
-  integrity sha1-NvPiLmB1CSD15yQaR2qMakInWtA=
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -5606,14 +5540,14 @@ mimic-fn@^2.1.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
-"minimatch@2 || 3", minimatch@^3.0.4:
+minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@1.2.5, minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
+minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
@@ -5625,13 +5559,6 @@ mixin-deep@^1.2.0:
   dependencies:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
-
-mkdirp@0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.3.tgz#5a514b7179259287952881e94410ec5465659f8c"
-  integrity sha512-P+2gwrFqx8lhew375MQHHeTlY8AuOJSrGf0R5ddkEndUkmwpgUob/vQuBD1V22/Cw1/lJr4x+EjllSezBThzBg==
-  dependencies:
-    minimist "^1.2.5"
 
 mkdirp@^0.5.1:
   version "0.5.5"
@@ -8044,13 +7971,6 @@ which-typed-array@^1.1.2:
     has-symbols "^1.0.1"
     is-typed-array "^1.1.3"
 
-which@1.2.11:
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/which/-/which-1.2.11.tgz#c8b2eeea6b8c1659fa7c1dd4fdaabe9533dc5e8b"
-  integrity sha1-yLLu6muMFln6fB3U/aq+lTPcXos=
-  dependencies:
-    isexe "^1.1.1"
-
 which@^1.2.9:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/which/-/which-1.3.1.tgz"
@@ -8130,17 +8050,6 @@ ws@^7, ws@^7.2.3:
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.3.tgz"
   integrity sha512-hr6vCR76GsossIRsr8OLR9acVVm1jyfEWvhbNjtgPOrfvAlKzvyeg/P6r8RuDjRyrcQoPQT7K0DGEPc7Ae6jzA==
 
-<<<<<<< HEAD
-=======
-xcode@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/xcode/-/xcode-2.0.0.tgz#134f1f94c26fbfe8a9aaa9724bfb2772419da1a2"
-  integrity sha512-5xF6RCjAdDEiEsbbZaS/gBRt3jZ/177otZcpoLCjGN/u1LrfgH7/Sgeeavpr/jELpyDqN2im3AKosl2G2W8hfw==
-  dependencies:
-    simple-plist "^1.0.0"
-    uuid "^3.3.2"
-
->>>>>>> f2bf54d5c8483d3c3720a344168a19091e9b5ad0
 xcode@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/xcode/-/xcode-3.0.1.tgz#3efb62aac641ab2c702458f9a0302696146aa53c"
