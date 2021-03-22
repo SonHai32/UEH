@@ -5,9 +5,9 @@
       location = "container:UEH.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:UEH.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:UEH.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
