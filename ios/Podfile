@@ -15,12 +15,12 @@ target 'UEH' do
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
 
-  use_flipper!({ 'Flipper-Folly' => '2.3.0' }) # update this part
+  use_flipper!({ 'Flipper-Folly' => '2.5' }) # update this part
  post_install do |installer|
    flipper_post_install(installer)
 
    installer.pods_project.targets.each do |target|
-    if target.name == "React-Core.common-AccessibilityResources"
+    if target.name == "React-Core-AccessibilityResources"
       target.remove_from_project
     end
   end
